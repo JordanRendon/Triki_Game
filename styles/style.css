@@ -10,5 +10,18 @@
 .header{
     display: flex;
     justify-content: center;
+    margin: 1.5rem 0;
+}
 
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
 }
