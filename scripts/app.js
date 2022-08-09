@@ -25,10 +25,40 @@ const triki = (element,i) => {
     jugadorActual = jugadorActual == 'X' ? 'O' : 'X';
 
     resultado.innerHTML = `player ${jugadorActual} turn`
+
+    for (let i = 0; i < condiciones.length; i++){
+        let condicion = condiciones[i]
+        let a = celdas[condicion[0]]
+        let b = celdas[condicion[1]]
+        let c = celdas[condicion[2]]
+        // console.log(a)
+        // console.log(b)
+        // console.log(c)
+
+        if (a =='' || b == '' || c ==''){
+            continue;
+        }
+        if (a==b && b==c){
+            resultado.innerHTML= `player ${a} Won😍😎😎 `
+            botones.forEach((btn)=>{btn.disabled=true})
+        }
+    
+    }
+   
 }
+const reset=() =>{
+celdas = ['','','','','','','','','']
+botones.forEach(element => {
+    element.value =''
+    element.disabled = false
+})
 
-
-
+jugadorActual = 'X'
+resultado.innerHTML = `Player ${jugadorActual} Turn`
+}
+document.querySelector('#reset').addEventListener('click',()=>{
+    reset()
+})
 
 botones.forEach((boton,indice)=>{
     boton.addEventListener('click',()=>{triki(boton,indice)})
